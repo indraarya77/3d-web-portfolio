@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indra Arya | High-End Web Developer</title>
+    <link rel="icon" href="images/logo1.png?v=2" type="image/png" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="images/logo2.png?v=2" type="image/png" media="(prefers-color-scheme: dark)">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Custom CSS for Glassmorphism & Animations -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="antialiased selection:bg-primary selection:text-dark">
+
+    <!-- Three.js Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-heading font-bold text-2xl tracking-tighter flex items-center gap-2">
+                <span class="text-primary"><i class="fa-solid fa-code"></i></span>
+                <span class="text-white">I<span class="text-transparent bg-clip-text bg-gradient-glow">A</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about"
+                    class="text-sm font-medium text-gray-300 hover:text-primary transition-colors">About</a>
+                <a href="#skills"
+                    class="text-sm font-medium text-gray-300 hover:text-primary transition-colors">Skills</a>
+                <a href="#projects"
+                    class="text-sm font-medium text-gray-300 hover:text-primary transition-colors">Projects</a>
+                <a href="#services"
+                    class="text-sm font-medium text-gray-300 hover:text-primary transition-colors">Services</a>
+                <a href="#contact" class="btn-outline px-5 py-2 rounded-full text-sm font-semibold">Let's Talk</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-gray-300 hover:text-primary text-2xl" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden absolute top-full left-0 w-full glass-nav border-t border-gray-800 hidden flex-col items-center py-6 space-y-6"
+            id="mobile-menu">
+            <a href="#about" class="text-lg font-medium text-gray-300 hover:text-primary mobile-link">About</a>
+            <a href="#skills" class="text-lg font-medium text-gray-300 hover:text-primary mobile-link">Skills</a>
+            <a href="#projects" class="text-lg font-medium text-gray-300 hover:text-primary mobile-link">Projects</a>
+            <a href="#services" class="text-lg font-medium text-gray-300 hover:text-primary mobile-link">Services</a>
+            <a href="#contact" class="btn-outline px-6 py-2 rounded-full text-lg font-semibold mobile-link">Let's
+                Talk</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center w-full relative z-10">
+            <!-- Text Content -->
+            <div class="space-y-6 text-center lg:text-left reveal">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-2 backdrop-blur-sm">
+                    <i class="fa-solid fa-rocket mr-2"></i> Available for new opportunities
+                </div>
+                <h1 class="font-heading text-5xl md:text-7xl font-bold leading-tight">
+                    Crafting <br>
+                    <span class="text-gradient">Digital</span> <br>
+                    Experiences.
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
+                    I'm a Fullstack Web Developer specializing in building exceptional, high-performance, and visually
+                    stunning digital products.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                    <a href="#projects"
+                        class="btn-primary px-8 py-3.5 rounded-full font-semibold text-center flex items-center justify-center gap-2">
+                        View Projects <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact"
+                        class="btn-outline px-8 py-3.5 rounded-full font-semibold text-center flex items-center justify-center gap-2">
+                        Hire Me <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center lg:justify-start gap-6 pt-8 text-gray-400">
+                    <a href="https://github.com/indraarya77" target="_blank"
+                        class="hover:text-primary text-xl transition-colors"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/indraaryaslametpraditya/" target="_blank"
+                        class="hover:text-primary text-xl transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/indraarrya/" target="_blank"
+                        class="hover:text-primary text-xl transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="/" class="hover:text-primary text-xl transition-colors" title="Back to Home"><i
+                            class="fa-solid fa-globe"></i></a>
+                </div>
+            </div>
+
+            <!-- 3D Object Container (Handled by global canvas, this acts as a spacer/visual anchor) -->
+            <div class="hidden lg:flex justify-center items-center h-[500px] relative pointer-events-none">
+                <!-- Floating badges -->
+                <div
+                    class="absolute top-10 left-10 glass-card px-4 py-2 flex items-center gap-2 animate-float text-sm font-medium">
+                    <i class="fa-brands fa-react text-[#61dafb] text-xl"></i> React.js
+                </div>
+                <div
+                    class="absolute bottom-20 right-10 glass-card px-4 py-2 flex items-center gap-2 animate-float-delayed text-sm font-medium">
+                    <i class="fa-brands fa-node-js text-[#339933] text-xl"></i> Node.js
+                </div>
+                <div
+                    class="absolute top-1/2 -right-4 glass-card px-4 py-2 flex items-center gap-2 animate-float text-sm font-medium">
+                    <i class="fa-brands fa-aws text-[#FF9900] text-xl"></i> Cloud
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+            <span class="text-xs text-gray-500 uppercase tracking-widest mb-2">Scroll</span>
+            <div class="w-[1px] h-8 bg-gradient-to-b from-primary to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">About <span class="text-gradient">Me</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-glow mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- 3D Tilt Image Card -->
+                <div class="reveal relative tilt-card group cursor-pointer perspective-container">
+                    <div class="glass-card p-2 rounded-2xl relative overflow-hidden z-10 js-tilt-element">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none">
+                        </div>
+                        <img src="images/profile.png"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';"
+                            alt="Indra Arya Portrait"
+                            class="w-full h-[500px] object-cover object-top rounded-xl filter grayscale group-hover:grayscale-0 transition-all duration-500 tilt-card-content bg-darker">
+
+                        <!-- overlay tech stack -->
+                        <div class="absolute bottom-6 left-6 right-6 z-30 tilt-card-content">
+                            <div class="glass-card p-4 flex justify-around backdrop-blur-md bg-dark/60 border-white/10">
+                                <i class="fa-brands fa-js text-yellow-400 text-3xl"></i>
+                                <i class="fa-brands fa-python text-blue-400 text-3xl"></i>
+                                <i class="fa-brands fa-docker text-blue-500 text-3xl"></i>
+                                <i class="fa-solid fa-database text-gray-300 text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Glow behind image -->
+                    <div
+                        class="absolute -inset-4 bg-gradient-glow opacity-20 blur-2xl rounded-full z-0 group-hover:opacity-40 transition-opacity duration-500">
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="space-y-6 reveal">
+                    <h3 class="text-2xl font-heading font-semibold">Bridging the gap between design and engineering.
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        Hello! I'm Indra, a passionate Fullstack Developer with over 3 years of experience creating
+                        dynamic, responsive, and highly interactive web applications. My journey in tech started with a
+                        fascination for how things work under the hood, evolving into a career dedicated to crafting
+                        seamless digital experiences.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        I specialize in the modern JavaScript ecosystem (React, Next.js, Node.js) and have a strong eye
+                        for UI/UX design. I believe that great software is a combination of clean code, intuitive
+                        design, and robust architecture.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 pt-6">
+                        <div class="glass-card p-4 text-center border border-white/5">
+                            <h4 class="text-4xl font-heading font-bold text-primary mb-1">3+</h4>
+                            <p class="text-sm text-gray-400 uppercase tracking-wider">Years Exp.</p>
+                        </div>
+                        <div class="glass-card p-4 text-center border border-white/5">
+                            <h4 class="text-4xl font-heading font-bold text-secondary mb-1">30+</h4>
+                            <p class="text-sm text-gray-400 uppercase tracking-wider">Projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 relative z-10 bg-darker/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">Technical <span
+                        class="text-gradient">Arsenal</span></h2>
+                <div class="w-20 h-1 bg-gradient-glow mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">A comprehensive overview of my technical capabilities
+                    and tools I use to bring ideas to life.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Frontend -->
+                <div class="glass-card p-8 reveal">
+                    <h3 class="text-xl font-heading font-semibold mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-desktop text-primary"></i> Frontend
+                    </h3>
+                    <div class="space-y-5">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>React / Next.js</span>
+                                <span class="text-primary">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-primary to-blue-500 h-2 rounded-full skill-fill"
+                                    data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>TypeScript</span>
+                                <span class="text-primary">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-primary to-blue-500 h-2 rounded-full skill-fill"
+                                    data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>Three.js / WebGL</span>
+                                <span class="text-primary">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-primary to-blue-500 h-2 rounded-full skill-fill"
+                                    data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>Tailwind CSS</span>
+                                <span class="text-primary">98%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-primary to-blue-500 h-2 rounded-full skill-fill"
+                                    data-width="98%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="glass-card p-8 reveal" style="transition-delay: 100ms;">
+                    <h3 class="text-xl font-heading font-semibold mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-server text-secondary"></i> Backend
+                    </h3>
+                    <div class="space-y-5">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>Node.js / Express</span>
+                                <span class="text-secondary">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-secondary to-purple-500 h-2 rounded-full skill-fill"
+                                    data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>PostgreSQL / MongoDB</span>
+                                <span class="text-secondary">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-secondary to-purple-500 h-2 rounded-full skill-fill"
+                                    data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>GraphQL / REST APIs</span>
+                                <span class="text-secondary">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-secondary to-purple-500 h-2 rounded-full skill-fill"
+                                    data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>Redis / Caching</span>
+                                <span class="text-secondary">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-secondary to-purple-500 h-2 rounded-full skill-fill"
+                                    data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Cloud -->
+                <div class="glass-card p-8 reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-xl font-heading font-semibold mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-cloud text-accent"></i> DevOps & Tools
+                    </h3>
+                    <div class="space-y-5">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>Git / GitHub Actions</span>
+                                <span class="text-accent">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-accent to-pink-500 h-2 rounded-full skill-fill"
+                                    data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>Docker / Containers</span>
+                                <span class="text-accent">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-accent to-pink-500 h-2 rounded-full skill-fill"
+                                    data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>AWS (EC2, S3, Lambda)</span>
+                                <span class="text-accent">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-accent to-pink-500 h-2 rounded-full skill-fill"
+                                    data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1 text-sm font-medium">
+                                <span>Figma / UI Design</span>
+                                <span class="text-accent">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-accent to-pink-500 h-2 rounded-full skill-fill"
+                                    data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">Featured <span
+                            class="text-gradient">Projects</span></h2>
+                    <div class="w-20 h-1 bg-gradient-glow rounded-full"></div>
+                </div>
+                <a href="https://github.com/indraarya77" target="_blank"
+                    class="text-primary hover:text-white transition-colors flex items-center gap-2 mt-4 md:mt-0 pb-1 border-b border-primary/30 hover:border-white">
+                    View GitHub <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="images/projects/lumina-nft-market/1.png" alt="Lumina NFT Market 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <img src="images/projects/lumina-nft-market/2.png" alt="Lumina NFT Market 2"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center z-30">
+                            <button
+                                class="slider-prev w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-r backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center z-30">
+                            <button
+                                class="slider-next w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-l backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77/lumina-nft-market" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20">JavaScript</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-secondary/10 text-secondary rounded border border-secondary/20">React</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Tailwind</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
+                            Lumina NFT Market</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A dynamic NFT marketplace application
+                            featuring digital asset browsing, collections, and modern UI/UX design.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
+                    style="transition-delay: 100ms;">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="images/projects/brew-coffee-pos/brew1.png" alt="Brew CoffeeShop POS 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <img src="images/projects/brew-coffee-pos/brew2.png" alt="Brew CoffeeShop POS 2"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/brew-coffee-pos/brew3.png" alt="Brew CoffeeShop POS 3"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/brew-coffee-pos/brew4.png" alt="Brew CoffeeShop POS 4"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/brew-coffee-pos/brew5.png" alt="Brew CoffeeShop POS 5"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center z-30">
+                            <button
+                                class="slider-prev w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-r backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center z-30">
+                            <button
+                                class="slider-next w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-l backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77/Brew-CoffeeShop-POS" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20">React</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-green-500/10 text-green-400 rounded border border-green-500/20">Tailwind</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded border border-yellow-500/20">Vite</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">Brew
+                            CoffeeShop POS</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A robust point of sale web application
+                            built with modern tooling for efficient coffee shop management.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
+                    style="transition-delay: 200ms;">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="images/projects/ebike-landing-page/ebike1.png" alt="E-Bike Landing Page 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <img src="images/projects/ebike-landing-page/ebike2.png" alt="E-Bike Landing Page 2"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/ebike-landing-page/ebike3.png" alt="E-Bike Landing Page 3"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/ebike-landing-page/ebike4.png" alt="E-Bike Landing Page 4"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/ebike-landing-page/ebike5.png" alt="E-Bike Landing Page 5"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/ebike-landing-page/ebike6.png" alt="E-Bike Landing Page 6"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center z-30">
+                            <button
+                                class="slider-prev w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-r backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center z-30">
+                            <button
+                                class="slider-next w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-l backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77/ebike-landing-page" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-white/10 text-white rounded border border-white/20">HTML5</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">CSS3</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20">JavaScript</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
+                            E-Bike Landing Page</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A premium prototype landing page for a
+                            futuristic e-bike product featuring a dark aesthetic and neon accents.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
+                    style="transition-delay: 0ms;">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="images/projects/lamica-interior/lamica1.png" alt="Lamica Interior 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <img src="images/projects/lamica-interior/lamica2.png" alt="Lamica Interior 2"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/lamica-interior/lamica3.png" alt="Lamica Interior 3"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/lamica-interior/lamica4.png" alt="Lamica Interior 4"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/lamica-interior/lamica5.png" alt="Lamica Interior 5"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center z-30">
+                            <button
+                                class="slider-prev w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-r backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center z-30">
+                            <button
+                                class="slider-next w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-l backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77/lamica-interior" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-secondary/10 text-secondary rounded border border-secondary/20">Tailwind
+                                CSS</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">JavaScript</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
+                            Lamica Interior</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">An elegant, modern landing page built for
+                            a premium interior design firm with a sophisticated UI layout.</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
+                    style="transition-delay: 100ms;">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="images/projects/atelier-pos/atelier1.png" alt="The Atelier POS 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <img src="images/projects/atelier-pos/atelier2.png" alt="The Atelier POS 2"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/atelier-pos/atelier3.png" alt="The Atelier POS 3"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/atelier-pos/atelier4.png" alt="The Atelier POS 4"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/atelier-pos/atelier5.png" alt="The Atelier POS 5"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/atelier-pos/atelier6.png" alt="The Atelier POS 6"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center z-30">
+                            <button
+                                class="slider-prev w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-r backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center z-30">
+                            <button
+                                class="slider-next w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-l backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77/coffee-shop-pos" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20">TypeScript</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded border border-yellow-500/20">Zustand</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">The
+                            Atelier POS</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A comprehensive POS and inventory
+                            management system customized for high-end coffee shop operations.</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
+                    style="transition-delay: 200ms;">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="images/projects/fraud-detection-ml/1.png" alt="Fraud Detection ML 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77/fraud-detection-ml" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Python</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">Scikit-Learn</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-green-500/10 text-green-400 rounded border border-green-500/20">Machine
+                                Learning</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">Fraud
+                            Detection ML</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A data pipeline and model implementation
+                            for identifying financial anomalies and detecting fraudulent transactions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative z-10 bg-darker/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">What I <span
+                        class="text-gradient">Do</span></h2>
+                <div class="w-20 h-1 bg-gradient-glow mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 group hover:-translate-y-2 transition-transform duration-300 reveal">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary text-2xl group-hover:bg-primary group-hover:text-dark transition-colors border border-primary/20">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Web App Development</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">End-to-end development of scalable, secure, and
+                        robust web applications using modern tech stacks.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 group hover:-translate-y-2 transition-transform duration-300 reveal"
+                    style="transition-delay: 100ms;">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 text-secondary text-2xl group-hover:bg-secondary group-hover:text-white transition-colors border border-secondary/20">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Frontend Architecture</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Creating highly performant, accessible, and
+                        interactive user interfaces with React and Next.js.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 group hover:-translate-y-2 transition-transform duration-300 reveal"
+                    style="transition-delay: 200ms;">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 text-blue-400 text-2xl group-hover:bg-blue-500 group-hover:text-white transition-colors border border-blue-500/20">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Backend & API Design</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Building secure RESTful and GraphQL APIs, managing
+                        databases, and setting up cloud infrastructure.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card p-8 group hover:-translate-y-2 transition-transform duration-300 reveal"
+                    style="transition-delay: 300ms;">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 text-accent text-2xl group-hover:bg-accent group-hover:text-white transition-colors border border-accent/20">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">3D / WebGL Integration</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Elevating web experiences with interactive 3D
+                        elements, custom shaders, and smooth animations via Three.js.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">Client <span
+                        class="text-gradient">Testimonials</span></h2>
+                <div class="w-20 h-1 bg-gradient-glow mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-8 reveal relative">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-8 text-4xl text-white/5"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-14 h-14 rounded-full border-2 border-primary flex items-center justify-center font-bold text-xl bg-primary/20 text-primary shrink-0">
+                            H</div>
+                        <div>
+                            <h4 class="font-bold text-white">Hendra</h4>
+                            <p class="text-xs text-primary">Owner, Kopi Nusantara</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">"Kerja sama dengan Indra sangat memuaskan.
+                        Dia berhasil membuat aplikasi web Point of Sale (POS) yang sangat cepat dan mudah digunakan oleh
+                        para barista kami. Usaha kopi saya jadi jauh lebih rapi."</p>
+                    <div class="flex text-yellow-400 text-xs mt-4 gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-8 reveal" style="transition-delay: 100ms;">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-8 text-4xl text-white/5"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-14 h-14 rounded-full border-2 border-secondary flex items-center justify-center font-bold text-xl bg-secondary/20 text-secondary shrink-0">
+                            A</div>
+                        <div>
+                            <h4 class="font-bold text-white">Aminah</h4>
+                            <p class="text-xs text-secondary">Pemilik, Berkah Batik</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">"Website toko online untuk butik saya dibuat
+                        dengan sangat indah dan modern. Pelanggan sekarang lebih mudah berbelanja. Indra sangat paham
+                        apa yang dibutuhkan oleh pelaku usaha kecil seperti kami."</p>
+                    <div class="flex text-yellow-400 text-xs mt-4 gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-8 reveal hidden lg:block" style="transition-delay: 200ms;">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-8 text-4xl text-white/5"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-14 h-14 rounded-full border-2 border-accent flex items-center justify-center font-bold text-xl bg-accent/20 text-accent shrink-0">
+                            A</div>
+                        <div>
+                            <h4 class="font-bold text-white">Ahmad</h4>
+                            <p class="text-xs text-accent">Founder, LogistikKita</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">"Sebagai startup yang baru merintis, kami
+                        butuh landing page yang terlihat kredibel dan profesional di mata calon mitra. Indra
+                        mewujudkannya dengan desain yang luar biasa dan pengerjaan yang cepat."</p>
+                    <div class="flex text-yellow-400 text-xs mt-4 gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative z-10 bg-darker/80 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div class="reveal">
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Let's Build Something <span
+                            class="text-gradient">Amazing</span></h2>
+                    <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                        I'm currently available for freelance work and full-time opportunities. If you have a project
+                        that needs some creative coding, let's talk.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary text-xl border-primary/30">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Email</p>
+                                <a href="mailto:indraarya77.ia@gmail.com"
+                                    class="text-lg text-white hover:text-primary transition-colors">indraarya77.ia@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-secondary text-xl border-secondary/30">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Location</p>
+                                <p class="text-lg text-white">Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mt-12">
+                        <a href="https://github.com/indraarya77" target="_blank"
+                            class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:bg-white hover:text-dark transition-all duration-300">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/indraaryaslametpraditya/" target="_blank"
+                            class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all duration-300">
+                            <i class="fa-brands fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/indraarrya/" target="_blank"
+                            class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:bg-[#E1306C] hover:border-[#E1306C] transition-all duration-300">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-card p-8 md:p-10 reveal">
+                    <form
+                        onsubmit="event.preventDefault(); const name=document.getElementById('c-name').value; const subj=document.getElementById('c-subj').value; const msg=document.getElementById('c-msg').value; const text=encodeURIComponent('Hi Indra, I am '+name+'. Regarding: '+subj+'\n\n'+msg); window.open('https://wa.me/6281240266543?text='+text, '_blank');"
+                        class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-gray-400 ml-1">Name</label>
+                                <input type="text" id="c-name" required
+                                    class="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                    placeholder="Your Name">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-gray-400 ml-1">Email</label>
+                                <input type="email" id="c-email" required
+                                    class="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                    placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-400 ml-1">Subject</label>
+                            <input type="text" id="c-subj" required
+                                class="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                placeholder="Project Inquiry">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-400 ml-1">Message</label>
+                            <textarea id="c-msg" rows="4" required
+                                class="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
+                                placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full btn-primary py-4 rounded-xl font-bold text-lg tracking-wide flex justify-center items-center gap-2">
+                            Send Message <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 relative z-10 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 Indra Arya. All rights reserved.
+            </p>
+            <a href="#top"
+                class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white hover:text-primary transition-colors border-white/10">
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Interactions and Animations Script -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+:root {
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(20, 20, 20, 0.4);
+}
+
+body {
+    background-color: #050505;
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+/* Hide Scrollbar but keep functionality */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00f0ff;
+}
+
+/* Glassmorphism Utilities */
+.glass-nav {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.2);
+}
+
+/* Text Gradients */
+.text-gradient {
+    background: linear-gradient(to right, #00f0ff, #8a2be2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Buttons */
+.btn-primary {
+    position: relative;
+    background: linear-gradient(45deg, #00f0ff, #8a2be2);
+    color: white;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, #8a2be2, #00f0ff);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+.btn-primary:hover::before {
+    opacity: 1;
+}
+.btn-primary:hover {
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.btn-outline:hover {
+    background: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 3D Tilt Card Container */
+.tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.tilt-card-content {
+    transform: translateZ(30px); /* Pushes content forward */
+}
+
+/* Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skill Bar Animations */
+.skill-fill {
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Background Canvas */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+.animate-float-delayed {
+    animation: float 4s ease-in-out 2s infinite;
+}
