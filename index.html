@@ -76,8 +76,8 @@
             <!-- Text Content -->
             <div class="space-y-6 text-center lg:text-left reveal">
                 <div
-                    class="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-2 backdrop-blur-sm">
-                    <i class="fa-solid fa-rocket mr-2"></i> Available for new opportunities
+                    class="group inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-2 backdrop-blur-sm cursor-pointer hover:border-primary hover:bg-primary/20 hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fa-solid fa-rocket mr-2 group-hover:animate-bounce"></i> Available for new opportunities
                 </div>
                 <h1 class="font-heading text-5xl md:text-7xl font-bold leading-tight">
                     Crafting <br>
@@ -153,7 +153,6 @@
                             class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none">
                         </div>
                         <img src="images/profile.png"
-                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';"
                             alt="Indra Arya Portrait"
                             class="w-full aspect-square md:aspect-auto md:h-[500px] object-cover object-top rounded-xl filter grayscale group-hover:grayscale-0 transition-all duration-500 tilt-card-content bg-darker">
 
@@ -391,6 +390,126 @@
                         <div
                             class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
                         </div>
+                        <img src="images/projects/photoflow/1.png" alt="PhotoFlow 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <img src="images/projects/photoflow/2.png" alt="PhotoFlow 2"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/3.png" alt="PhotoFlow 3"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/4.png" alt="PhotoFlow 4"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/5.png" alt="PhotoFlow 5"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/6.png" alt="PhotoFlow 6"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/7.png" alt="PhotoFlow 7"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/8.png" alt="PhotoFlow 8"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/9.png" alt="PhotoFlow 9"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/photoflow/10.png" alt="PhotoFlow 10"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center z-30">
+                            <button
+                                class="slider-prev w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-r backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center z-30">
+                            <button
+                                class="slider-next w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-l backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-indigo-500/10 text-indigo-400 rounded border border-indigo-500/20">Next.js</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Tailwind CSS</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-green-500/10 text-green-400 rounded border border-green-500/20">Supabase</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
+                            PhotoFlow</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A comprehensive ecosystem for professional photographers, featuring a desktop photo sorter, an interactive client proofing portal, and a streamlined admin dashboard.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
+                    style="transition-delay: 100ms;">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="images/projects/luxescent-commerce/1.png" alt="LuxeScent Commerce 1"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
+                        <img src="images/projects/luxescent-commerce/2.png" alt="LuxeScent Commerce 2"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/luxescent-commerce/3.png" alt="LuxeScent Commerce 3"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/luxescent-commerce/4.png" alt="LuxeScent Commerce 4"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/luxescent-commerce/5.png" alt="LuxeScent Commerce 5"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/luxescent-commerce/6.png" alt="LuxeScent Commerce 6"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+                        <img src="images/projects/luxescent-commerce/7.png" alt="LuxeScent Commerce 7"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-0 slide-img">
+
+                        <div class="absolute inset-y-0 left-0 flex items-center z-30">
+                            <button
+                                class="slider-prev w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-r backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute inset-y-0 right-0 flex items-center z-30">
+                            <button
+                                class="slider-next w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-l backdrop-blur-sm hover:bg-primary hover:text-dark transition-colors opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-sm pointer-events-none"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 z-40 flex gap-2">
+                            <a href="https://github.com/indraarya77" target="_blank"
+                                class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 tilt-card-content">
+                        <div class="flex gap-2 mb-3 flex-wrap">
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-secondary/10 text-secondary rounded border border-secondary/20">React</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Tailwind CSS</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">PostgreSQL</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
+                            LuxeScent Commerce</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">A premium perfume reseller platform featuring a high-fidelity user interface and integrated WhatsApp automation to optimize order management.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
+                    style="transition-delay: 200ms;">
+
+                    <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
+                        <div
+                            class="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
                         <img src="images/projects/lumina-nft-market/1.png" alt="Lumina NFT Market 1"
                             class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
                         <img src="images/projects/lumina-nft-market/2.png" alt="Lumina NFT Market 2"
@@ -410,7 +529,7 @@
                         </div>
 
                         <div class="absolute top-4 right-4 z-40 flex gap-2">
-                            <a href="https://github.com/indraarya77/lumina-nft-market" target="_blank"
+                            <a href="https://github.com/indraarya77" target="_blank"
                                 class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
@@ -432,9 +551,9 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 4 -->
                 <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
-                    style="transition-delay: 100ms;">
+                    style="transition-delay: 0ms;">
 
                     <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
                         <div
@@ -465,7 +584,7 @@
                         </div>
 
                         <div class="absolute top-4 right-4 z-40 flex gap-2">
-                            <a href="https://github.com/indraarya77/Brew-CoffeeShop-POS" target="_blank"
+                            <a href="https://github.com/indraarya77" target="_blank"
                                 class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
@@ -487,9 +606,9 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 5 -->
                 <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
-                    style="transition-delay: 200ms;">
+                    style="transition-delay: 100ms;">
 
                     <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
                         <div
@@ -522,7 +641,7 @@
                         </div>
 
                         <div class="absolute top-4 right-4 z-40 flex gap-2">
-                            <a href="https://github.com/indraarya77/ebike-landing-page" target="_blank"
+                            <a href="https://github.com/indraarya77" target="_blank"
                                 class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
@@ -531,7 +650,7 @@
                     <div class="p-6 tilt-card-content">
                         <div class="flex gap-2 mb-3 flex-wrap">
                             <span
-                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-white/10 text-white rounded border border-white/20">HTML5</span>
+                                class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-orange-500/10 text-orange-400 rounded border border-orange-500/20">HTML5</span>
                             <span
                                 class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">CSS3</span>
                             <span
@@ -544,9 +663,9 @@
                     </div>
                 </div>
 
-                <!-- Project 4 -->
+                <!-- Project 6 -->
                 <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
-                    style="transition-delay: 0ms;">
+                    style="transition-delay: 200ms;">
 
                     <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
                         <div
@@ -577,7 +696,7 @@
                         </div>
 
                         <div class="absolute top-4 right-4 z-40 flex gap-2">
-                            <a href="https://github.com/indraarya77/lamica-interior" target="_blank"
+                            <a href="https://github.com/indraarya77" target="_blank"
                                 class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
@@ -598,9 +717,9 @@
                     </div>
                 </div>
 
-                <!-- Project 5 -->
+                <!-- Project 7 -->
                 <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
-                    style="transition-delay: 100ms;">
+                    style="transition-delay: 0ms;">
 
                     <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
                         <div
@@ -633,7 +752,7 @@
                         </div>
 
                         <div class="absolute top-4 right-4 z-40 flex gap-2">
-                            <a href="https://github.com/indraarya77/coffee-shop-pos" target="_blank"
+                            <a href="https://github.com/indraarya77" target="_blank"
                                 class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
@@ -653,9 +772,9 @@
                     </div>
                 </div>
 
-                <!-- Project 6 -->
+                <!-- Project 8 -->
                 <div class="glass-card overflow-hidden group tilt-card js-tilt-element cursor-pointer reveal"
-                    style="transition-delay: 200ms;">
+                    style="transition-delay: 100ms;">
 
                     <div class="relative h-60 overflow-hidden tilt-card-content auto-slider group">
                         <div
@@ -664,7 +783,7 @@
                         <img src="images/projects/fraud-detection-ml/1.png" alt="Fraud Detection ML 1"
                             class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-all duration-1000 opacity-100 slide-img">
                         <div class="absolute top-4 right-4 z-40 flex gap-2">
-                            <a href="https://github.com/indraarya77/fraud-detection-ml" target="_blank"
+                            <a href="https://github.com/indraarya77" target="_blank"
                                 class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-colors border border-white/10">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>

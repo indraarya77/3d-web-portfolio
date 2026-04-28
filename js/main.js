@@ -221,45 +221,210 @@ function initThreeJS() {
     scene.add(particlesMesh);
 
 
-    // 2. Abstract Geometric Object (Hero Section visually)
-    const abstractGroup = new THREE.Group();
-    
-    // Outer wireframe Icosahedron
-    const geoOuter = new THREE.IcosahedronGeometry(8, 1);
-    const matOuter = new THREE.MeshBasicMaterial({
-        color: 0x8a2be2, // Purple
-        wireframe: true,
-        transparent: true,
-        opacity: 0.15
-    });
-    const meshOuter = new THREE.Mesh(geoOuter, matOuter);
-    
-    // Inner solid Torus Knot
-    const geoInner = new THREE.TorusKnotGeometry(4, 1.2, 100, 16);
-    const matInner = new THREE.MeshStandardMaterial({
-        color: 0x050505,
-        emissive: 0x00f0ff, // Cyan glow
-        emissiveIntensity: 0.4,
-        roughness: 0.2,
-        metalness: 0.8
-    });
-    const meshInner = new THREE.Mesh(geoInner, matInner);
+    // --- Procedural Texture Generation (For Realism) ---
+    function createTechTexture() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024;
+        canvas.height = 1024;
+        const ctx = canvas.getContext('2d');
+        
+        ctx.fillStyle = '#444';
+        ctx.fillRect(0, 0, 1024, 1024);
 
-    abstractGroup.add(meshOuter);
-    abstractGroup.add(meshInner);
+        ctx.strokeStyle = '#111';
+        ctx.lineWidth = 3;
+        for(let i = 0; i < 1024; i += 64) {
+            ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1024); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(1024, i); ctx.stroke();
+        }
+
+        for(let i = 0; i < 300; i++) {
+            const shade = Math.floor(Math.random() * 80) + 20; 
+            ctx.fillStyle = `rgb(${shade}, ${shade}, ${shade})`;
+            const x = Math.floor(Math.random() * 16) * 64;
+            const y = Math.floor(Math.random() * 16) * 64;
+            const w = Math.floor(Math.random() * 4 + 1) * 64;
+            const h = Math.floor(Math.random() * 4 + 1) * 64;
+            ctx.fillRect(x, y, w, h);
+            ctx.strokeRect(x, y, w, h);
+        }
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.wrapS = THREE.RepeatWrapping;
+        tex.wrapT = THREE.RepeatWrapping;
+        return tex;
+    }
+
+    function createEnvTexture() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024;
+        canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        
+        const grad = ctx.createLinearGradient(0, 0, 0, 512);
+        grad.addColorStop(0, '#010205');
+        grad.addColorStop(0.5, '#051025');
+        grad.addColorStop(1, '#010205');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1024, 512);
+        
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(200, 200, 150, 30);
+        ctx.fillStyle = '#00ffff';
+        ctx.fillRect(700, 150, 100, 20);
+        ctx.fillStyle = '#0055ff';
+        ctx.fillRect(400, 300, 250, 50);
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.mapping = THREE.EquirectangularReflectionMapping;
+        return tex;
+    }
+
+    scene.environment = createEnvTexture();
+
+    // --- 4. The Main Object (Realistic Futuristic Core) ---
+    const coreGroup = new THREE.Group();
     
     // Position it to the right for Desktop, center for mobile
     const updateObjectPosition = () => {
         if (window.innerWidth > 1024) {
-            abstractGroup.position.x = 12;
-            abstractGroup.position.y = 2;
+            coreGroup.position.x = 14.5; // Digeser sedikit ke tengah untuk menghindari distorsi lensa (lonjong) di ujung layar
+            coreGroup.position.y = -2.5;
         } else {
-            abstractGroup.position.x = 0;
-            abstractGroup.position.y = -5; // Move down to not block text
+            coreGroup.position.x = 0;
+            coreGroup.position.y = -5; // Move down to not block text
         }
     };
     updateObjectPosition();
-    scene.add(abstractGroup);
+    scene.add(coreGroup);
+
+    const coreRadius = 6.5; // Diperbesar lagi dari 5.5
+    const panelTex = createTechTexture();
+
+    // A. Inner Metallic Core (Realistic PBR Material)
+    const sphereGeo = new THREE.SphereGeometry(coreRadius, 128, 128);
+    const sphereMat = new THREE.MeshPhysicalMaterial({
+        color: 0x030815,
+        metalness: 1.0,
+        roughness: 0.5,
+        bumpMap: panelTex,
+        bumpScale: 0.04,
+        roughnessMap: panelTex,
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.2
+    });
+    const coreSphere = new THREE.Mesh(sphereGeo, sphereMat);
+    coreGroup.add(coreSphere);
+
+    // B. Glowing Circuit/Energy Grid 
+    const gridGeo = new THREE.IcosahedronGeometry(coreRadius + 0.1, 4);
+    const gridMat = new THREE.MeshBasicMaterial({
+        color: 0x00ffff,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.15,
+        blending: THREE.AdditiveBlending
+    });
+    const coreGrid = new THREE.Mesh(gridGeo, gridMat);
+    coreGroup.add(coreGrid);
+
+    // C. Refractive Outer Glass Shell
+    const glassGeo = new THREE.SphereGeometry(coreRadius + 0.25, 64, 64);
+    const glassMat = new THREE.MeshPhysicalMaterial({
+        color: 0x00bbff,
+        metalness: 0.1,
+        roughness: 0.05,
+        transmission: 1.0,
+        ior: 1.4,
+        thickness: 1.5,
+        transparent: true,
+        opacity: 1.0,
+        side: THREE.FrontSide
+    });
+    const glassSphere = new THREE.Mesh(glassGeo, glassMat);
+    coreGroup.add(glassSphere);
+
+    // D. Animated Light Pulses (Energy Nodes)
+    const nodesGroup = new THREE.Group();
+    coreGroup.add(nodesGroup);
+    const nodeCount = 60;
+    const nodeGeo = new THREE.SphereGeometry(0.06, 16, 16);
+    const nodeMat = new THREE.MeshBasicMaterial({
+        color: 0x88ffff,
+        transparent: true,
+        blending: THREE.AdditiveBlending
+    });
+    
+    const nodesData = [];
+    for (let i = 0; i < nodeCount; i++) {
+        const phi = Math.acos(-1 + (2 * i) / nodeCount);
+        const theta = Math.sqrt(nodeCount * Math.PI) * phi;
+        const node = new THREE.Mesh(nodeGeo, nodeMat.clone());
+        
+        const r = coreRadius + 0.15;
+        node.position.setFromSphericalCoords(r, phi, theta);
+        
+        nodesGroup.add(node);
+        nodesData.push({ mesh: node, speed: 0.5 + Math.random() * 2, offset: Math.random() * Math.PI * 2 });
+    }
+
+    // E. Realistic Orbit Rings
+    const createRing = (radius, thickness, color, roughness, rotX, rotY) => {
+        const ringGeo = new THREE.TorusGeometry(radius, thickness, 16, 128);
+        const ringMat = new THREE.MeshPhysicalMaterial({
+            color: color,
+            metalness: 1.0,
+            roughness: roughness,
+            clearcoat: 1.0,
+            emissive: color,
+            emissiveIntensity: 0.3 // Diturunkan dari 0.8 agar tidak terlalu menyala, tapi lebih terlihat dari versi awal
+        });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.set(rotX, rotY, 0);
+        return ring;
+    };
+
+    const ring1 = createRing(coreRadius + 1.8, 0.04, 0x00ffff, 0.2, Math.PI / 2.5, 0);
+    const ring2 = createRing(coreRadius + 3.0, 0.02, 0x0055ff, 0.4, -Math.PI / 3, Math.PI / 4);
+    const ring3 = createRing(coreRadius + 4.0, 0.01, 0x88ccff, 0.1, 0, Math.PI / 6);
+    coreGroup.add(ring1, ring2, ring3);
+
+    // F. Custom Fresnel Glow Shader
+    const glowGeo = new THREE.SphereGeometry(coreRadius + 1.2, 64, 64);
+    const glowMat = new THREE.ShaderMaterial({
+        uniforms: {
+            "c": { type: "f", value: 0.1 },
+            "p": { type: "f", value: 3.5 },
+            glowColor: { type: "c", value: new THREE.Color(0x0055ff) },
+            viewVector: { type: "v3", value: camera.position }
+        },
+        vertexShader: `
+            uniform vec3 viewVector;
+            uniform float c;
+            uniform float p;
+            varying float intensity;
+            void main() {
+                vec3 vNormal = normalize( normalMatrix * normal );
+                vec3 vNormel = normalize( normalMatrix * viewVector );
+                intensity = pow( max(0.0, c - dot(vNormal, vNormel)), p );
+                gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+            }
+        `,
+        fragmentShader: `
+            uniform vec3 glowColor;
+            varying float intensity;
+            void main() {
+                vec3 glow = glowColor * intensity;
+                gl_FragColor = vec4( glow, intensity * 0.8 );
+            }
+        `,
+        side: THREE.BackSide,
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        depthWrite: false
+    });
+    const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+    coreGroup.add(glowMesh);
 
     // 3. Lighting for the inner object
     const pointLight1 = new THREE.PointLight(0x00f0ff, 2, 50);
@@ -311,16 +476,35 @@ function initThreeJS() {
         targetX = mouseX * 0.001;
         targetY = mouseY * 0.001;
         
-        abstractGroup.rotation.y += 0.01 + (targetX - abstractGroup.rotation.y) * 0.05;
-        abstractGroup.rotation.x += 0.01 + (targetY - abstractGroup.rotation.x) * 0.05;
+        coreGroup.rotation.y += 0.01 + (targetX - coreGroup.rotation.y) * 0.05;
+        coreGroup.rotation.x += 0.01 + (targetY - coreGroup.rotation.x) * 0.05;
 
-        // Inner knot custom rotation
-        meshInner.rotation.x = elapsedTime * 0.2;
-        meshInner.rotation.y = elapsedTime * 0.3;
+        // Rotate core elements
+        coreSphere.rotation.y += 0.001;
+        glassSphere.rotation.y += 0.001;
+        coreGrid.rotation.y += 0.002;
+        coreGrid.rotation.z += 0.001;
+        nodesGroup.rotation.y += 0.001;
+
+        // Rotate Rings
+        ring1.rotation.z += 0.002;
+        ring2.rotation.z -= 0.003;
+        ring3.rotation.y += 0.001;
+        ring3.rotation.x -= 0.002;
+
+        nodesData.forEach(data => {
+            const pulse = 0.5 + 0.5 * Math.sin(elapsedTime * data.speed + data.offset);
+            data.mesh.scale.setScalar(pulse);
+            data.mesh.material.opacity = pulse;
+        });
+
+        // Update glow shader view vector
+        const viewVector = new THREE.Vector3().subVectors(camera.position, coreGroup.position);
+        glowMat.uniforms.viewVector.value = viewVector;
 
         // Scroll parallax: Move group up as you scroll down
         // Also scale it down slightly so it disappears nicely
-        abstractGroup.position.y = (window.innerWidth > 1024 ? 2 : -5) + (scrollY * -0.01);
+        coreGroup.position.y = (window.innerWidth > 1024 ? -2.5 : -5) + (scrollY * -0.01);
         particlesMesh.position.y = scrollY * -0.005; // Slower parallax for background
 
         renderer.render(scene, camera);
